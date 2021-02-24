@@ -8,16 +8,16 @@
         $username = $data->username;
         $password = $data->password;
 
-        $sql = "SELECT username, password FROM User";
+        $sql = "SELECT username, password, flag FROM User";
         $status = '';
         if($res = $conn->query($sql)) {
             while($row = $res->fetch_row()){
             if($username === $row[0] && $password === $row[1]){
-                  $status = 'VALID';
+                  $status = $row[2];
             } 
-         }
-         $res->free_result();
-            echo json_encode($status);
+        }
+        $res->free_result();
+        echo json_encode($status);
         } else {
             http_response_code(404);
         }
