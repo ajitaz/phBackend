@@ -5,7 +5,8 @@
     $dataJson = file_get_contents('php://input');
     if(!empty($dataJson)){
         $data = json_decode($dataJson);
-        $sql = "INSERT INTO User(username, password ,email, flag) VALUES('$data->username', '$data->password', '$data->email', '$data->flag')";
+        $hash = password_hash($data->password,PASSWORD_DEFAULT);
+        $sql = "INSERT INTO User(username, password ,email, phone, flag) VALUES('$data->username', '$hash', '$data->email', '$data->phone', '$data->flag')";
     
         if($conn->query($sql)=== TRUE) {
             http_response_code(200);

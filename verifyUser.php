@@ -12,7 +12,7 @@
         $status = '';
         if($res = $conn->query($sql)) {
             while($row = $res->fetch_row()){
-            if($username === $row[0] && $password === $row[1]){
+            if($username === $row[0] && password_verify($password,$row[1])){
                   $status = $row[2];
             } 
         }
