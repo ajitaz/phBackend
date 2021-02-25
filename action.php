@@ -14,7 +14,7 @@
             break; 
 
         case 'delete' :
-            $sql = "DELETE FROM User WHERE id = '4'";
+            $sql = "DELETE FROM User WHERE id = '$data->id'";
             if($conn->query($sql)){
                 echo 'true';
             }
