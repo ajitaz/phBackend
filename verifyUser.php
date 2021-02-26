@@ -14,7 +14,8 @@
             while($row = $res->fetch_row()){
             if($username === $row[0] && password_verify($password,$row[1])){
                   $status = $row[2];
-            } 
+                  break;
+            }
         }
         $res->free_result();
         echo json_encode($status);
