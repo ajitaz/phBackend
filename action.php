@@ -10,13 +10,16 @@
        switch($data->value){
 
         case 'edit' :
-            echo  json_encode('why man');
+           $sql = "UPDATE User SET username = '$data->username', email = '$data->email', phone = '$data->phone', flag = '$data->flag' WHERE id = $data->id";
+           if($conn->query($sql)){
+               echo json_encode('Edited');
+           }
             break; 
 
         case 'delete' :
             $sql = "DELETE FROM User WHERE id = '$data->id'";
             if($conn->query($sql)){
-                echo 'true';
+                echo json_encode('Deleted');
             }
             break;
             
