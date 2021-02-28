@@ -17,7 +17,8 @@
             }
 
             $response = array();
-$upload_dir = '/home/ajit/Documents/ProjectReact/plant_hugger/public/images/';
+// $upload_dir = '/home/ajit/Documents/ProjectReact/plant_hugger/public/images/';
+$upload_dir = '/Users/crpoudyal/PlantHuggers/public/images/';
 $server_url = 'http://localhost:3000';
 
 if($_FILES['image'])
@@ -63,6 +64,7 @@ if($_FILES['image'])
 }
 
 echo json_encode($response);
+
 
 }
             
