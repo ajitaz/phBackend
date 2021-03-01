@@ -1,20 +1,28 @@
 <?php
-    require 'dbconn.php';
-    require 'header.php';
+require 'dbconn.php';
+require 'header.php';
 
-    $sql = 'SELECT * FROM User';
-    
-    $result = mysqli_query($conn, $sql);
-    $row = array();
+$option = $_GET['option'];
+switch ($option) {
 
-    while($res = mysqli_fetch_assoc($result)) {
-        $row[] = $res;
-    }
+    case 'category':
+        $sql = 'SELECT cid, cname FROM Category';
+        break;
 
-    $result->free_result();
+    case 'viewUser':
+        $sql = 'SELECT * FROM User';
+        break;
+}
 
-    echo json_encode($row);
+$result = mysqli_query($conn, $sql);
+$row = array();
 
-    mysqli_close($conn);
+while ($res = mysqli_fetch_assoc($result)) {
+    $row[] = $res;
+}
 
-    
+$result->free_result();
+
+echo json_encode($row);
+
+mysqli_close($conn);

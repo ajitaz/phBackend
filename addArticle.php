@@ -2,9 +2,11 @@
 require 'dbconn.php';
 require 'header.php';
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $cname = isset($_POST['cname']) ? (mysqli_real_escape_string($conn, $_POST['cname'])) : "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = isset($_POST['title']) ? (mysqli_real_escape_string($conn, $_POST['title'])) : "";
     $description = isset($_POST['description']) ? (mysqli_real_escape_string($conn, $_POST['description'])) : "";
+    $category_id = isset($_POST['cid']) ? (mysqli_real_escape_string($conn, $_POST['cid'])) : "";
+    $author = isset($_POST['author']) ? (mysqli_real_escape_string($conn, $_POST['author'])) : "";
     $image = isset($_FILES['image']) ? basename($_FILES["image"]["name"]) : "";
 
 
@@ -40,16 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         "url" => $server_url . "/" . $upload_name
                     );
 
-                    $sql_id = "SELECT img_id FROM Image WHERE iname = '$image'";
+                    $sql_id = "SELECT img_id from Image WHERE iname = '$image'";
                     if ($result = mysqli_query($conn, $sql_id)) {
                         http_response_code(200);
                         echo 'Successfully retrive image ID';
                         $row = mysqli_fetch_assoc($result);
                         $image_id = $row['img_id'];
-                        $sql = "INSERT INTO Category(cname, description, img_id) VALUES('$cname', '$description', $image_id)";
+                        $sql = "INSERT INTO Article(title, description, author_id, cid, img_id) VALUES('$title', '$description', $author, $category_id, $image_id)";
                         if (mysqli_query($conn, $sql)) {
                             http_response_code(200);
-                            echo 'Successfully inserted Category in database';
+                            echo 'Successfully inserted article in database';
                         }
                     }
                 } else {
