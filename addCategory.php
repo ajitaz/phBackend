@@ -74,3 +74,4 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo 'error in database';
     }
 }
+mysqli_close($conn);
