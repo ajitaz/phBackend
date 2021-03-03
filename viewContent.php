@@ -12,6 +12,10 @@ switch ($option) {
     case 'viewUser':
         $sql = 'SELECT * FROM User';
         break;
+
+    case 'viewNursery':
+        $sql = 'SELECT * FROM Nursery NATURAL JOIN Image';
+        break;
 }
 
 $result = mysqli_query($conn, $sql);
