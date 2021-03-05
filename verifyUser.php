@@ -8,12 +8,15 @@
         $username = $data->username;
         $password = $data->password;
 
-        $sql = "SELECT username, password, flag FROM User";
-        $status = '';
+        $sql = "SELECT id, username, password, flag FROM User";
+        $status = array();
         if($res = $conn->query($sql)) {
             while($row = $res->fetch_row()){
-            if($username === $row[0] && password_verify($password,$row[1])){
-                  $status = $row[2];
+            if($username === $row[1] && password_verify($password,$row[2])){
+                  $status = array(
+                      'id' => $row[0],
+                      'flag' => $row[3]
+                  );
                   break;
             }
         }

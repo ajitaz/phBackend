@@ -22,6 +22,10 @@
                 echo json_encode('Deleted');
             }
             break;
+
+        case 'getId':
+            # sql = get nid from nurseryowner table...
+            break;
             
             
        }
