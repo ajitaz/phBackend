@@ -1,36 +1,38 @@
 <?php
-     require 'dbconn.php';
-     require 'header.php';
+require 'dbconn.php';
+require 'header.php';
 
-     $dataJson = file_get_contents('php://input');
+$dataJson = file_get_contents('php://input');
 
-    if(!empty($dataJson)){
-        $data = json_decode($dataJson);
+if (!empty($dataJson)) {
+    $data = json_decode($dataJson);
 
-       switch($data->value){
+    switch ($data->value) {
 
-        case 'edit' :
-           $sql = "UPDATE User SET username = '$data->username', email = '$data->email', phone = '$data->phone', flag = '$data->flag' WHERE id = $data->id";
-           if($conn->query($sql)){
-               echo json_encode('Edited');
-           }
-            break; 
+        case 'edit':
+            $sql = "UPDATE User SET username = '$data->username', email = '$data->email', phone = '$data->phone', flag = '$data->flag' WHERE id = $data->id";
+            if ($conn->query($sql)) {
+                echo json_encode('Edited');
+            }
+            break;
 
-        case 'delete' :
+        case 'delete':
             $sql = "DELETE FROM User WHERE id = '$data->id'";
-            if($conn->query($sql)){
+            if ($conn->query($sql)) {
                 echo json_encode('Deleted');
             }
             break;
 
         case 'getId':
-            # sql = get nid from nurseryowner table...
-            break;
-            
-            
-       }
-       
-        
-    }
+            $sql = "SELECT nid from Nursery_owner WHERE uid = '$data->uid'";
+            if ($result = mysqli_query($conn, $sql)) {
+                $row = mysqli_fetch_assoc($result);
+                echo 'Successfully fetched nid';
+                echo json_decode($row);
+            }
 
-    mysqli_close($conn);
+            break;
+    }
+}
+
+mysqli_close($conn);
