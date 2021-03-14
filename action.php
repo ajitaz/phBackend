@@ -24,11 +24,10 @@ if (!empty($dataJson)) {
             break;
 
         case 'getId':
-            $sql = "SELECT nid from Nursery_owner WHERE uid = '$data->uid'";
+            $sql = "SELECT nid from Nursery_Owner WHERE uid = '$data->uid'";
             if ($result = mysqli_query($conn, $sql)) {
                 $row = mysqli_fetch_assoc($result);
-                echo 'Successfully fetched nid';
-                echo json_decode($row);
+                echo json_encode($row);
             }
 
             break;
