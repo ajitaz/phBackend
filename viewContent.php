@@ -16,6 +16,10 @@ switch ($option) {
     case 'viewNursery':
         $sql = 'SELECT * FROM Nursery NATURAL JOIN Image';
         break;
+
+    case 'viewProduct':
+        $sql = 'SELECT pid, pname, p_description, price, quantity, iname, cname FROM Product NATURAL JOIN Image NATURAL JOIN Category';
+        break;
 }
 
 $result = mysqli_query($conn, $sql);

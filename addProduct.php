@@ -51,13 +51,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         $row = mysqli_fetch_assoc($result);
                         $image_id = $row['img_id'];
-                        $sql = "INSERT INTO Product(pname, description, price, quantity, img_id, nid, cid) VALUES ('$pname','$description', $price, $quantity, $image_id, $nid, $cid)";
+                        $sql = "INSERT INTO Product(pname, p_description, price, quantity, img_id, nid, cid) VALUES ('$pname','$description', $price, $quantity, $image_id, $nid, $cid)";
                         if (mysqli_query($conn, $sql)) {
                             http_response_code(200);
                             echo "Successfully Product Added";
                         } else {
                             http_response_code(200);
-                            echo "Could NOT Add Product";
+                            echo "Could NOT Add Product into DATABASE ";
                         }
                     }
                 } else {
