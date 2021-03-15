@@ -18,7 +18,7 @@ switch ($option) {
         break;
 
     case 'viewProduct':
-        $sql = 'SELECT pid, pname, p_description, price, quantity, iname, cname FROM Product NATURAL JOIN Image NATURAL JOIN Category';
+        $sql = 'SELECT pid, pname, p_description, price, quantity, iname, cname, cid FROM Product NATURAL JOIN Image NATURAL JOIN Category';
         break;
 }
 
