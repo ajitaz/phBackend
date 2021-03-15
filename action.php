@@ -29,7 +29,12 @@ if (!empty($dataJson)) {
                 $row = mysqli_fetch_assoc($result);
                 echo json_encode($row);
             }
-
+            break;
+        case 'editProduct':
+            $sql = "UPDATE Product SET pname = '$data->pname', price = $data->price, p_description= '$data->description', quantity= $data->quantity, cid = $data->cid WHERE pid = $data->pid";
+            if ($conn->query($sql)) {
+                echo json_encode('Product Updated');
+            }
             break;
     }
 }
