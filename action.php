@@ -37,12 +37,26 @@ if (!empty($dataJson)) {
             }
             break;
 
-            case 'deleteProduct':
-                $sql = "DELETE FROM Product WHERE pid = '$data->pid'";
-                if ($conn->query($sql)) {
-                    echo json_encode('Product Deleted');
-                }
-                break;
+        case 'deleteProduct':
+            $sql = "DELETE FROM Product WHERE pid = '$data->pid'";
+            if ($conn->query($sql)) {
+                echo json_encode('Product Deleted');
+            }
+            break;
+
+        case 'editNursery':
+            $sql = "UPDATE Nursery SET name ='$data->name', address='$data->address', description='$data->description', phone='$data->phone' WHERE nid = $data->nid";
+            if ($conn->query($sql)) {
+                echo json_encode('Nursery Updated');
+            }
+            break;
+
+        case 'deleteNursery':
+            $sql = "DELETE FROM Nursery WHERE nid='$data->nid'";
+            if($conn->query($sql)){
+                echo json_encode('Nursery Deleted');
+            }
+            break;
     }
 }
 
