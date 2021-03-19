@@ -46,10 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         echo 'Successfully retrive image ID';
                         $row = mysqli_fetch_assoc($result);
                         $image_id = $row['img_id'];
-                        $sql = "INSERT INTO Category(cname, description, img_id) VALUES('$cname', '$description', $image_id)";
+                        $sql = "INSERT INTO Category(cname, description, c_img_id) VALUES('$cname', '$description', $image_id)";
                         if (mysqli_query($conn, $sql)) {
                             http_response_code(200);
                             echo 'Successfully inserted Category in database';
+                        }
+                        else{
+                            http_response_code(400);
                         }
                     }
                 } else {

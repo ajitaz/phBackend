@@ -6,7 +6,7 @@ $option = $_GET['option'];
 switch ($option) {
 
     case 'category':
-        $sql = 'SELECT cid, cname FROM Category';
+        $sql = 'SELECT * FROM Category INNER JOIN Image ON Category.c_img_id=Image.img_id';
         break;
 
     case 'viewUser':
