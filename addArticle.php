@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         echo 'Successfully retrive image ID';
                         $row = mysqli_fetch_assoc($result);
                         $image_id = $row['img_id'];
-                        $sql = "INSERT INTO Article(title, description, author_id, cid, img_id) VALUES('$title', '$description', $author, $category_id, $image_id)";
+                        $sql = "INSERT INTO Article(title, a_description, author_id, cid, img_id) VALUES('$title', '$description', $author, $category_id, $image_id)";
                         if (mysqli_query($conn, $sql)) {
                             http_response_code(200);
                             echo 'Successfully inserted article in database';
