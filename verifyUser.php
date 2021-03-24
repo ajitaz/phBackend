@@ -15,7 +15,8 @@
             if($username === $row[1] && password_verify($password,$row[2])){
                   $status = array(
                       'id' => $row[0],
-                      'flag' => $row[3]
+                      'flag' => $row[3],
+                      'uname' => $row[1]
                   );
                   break;
             }
