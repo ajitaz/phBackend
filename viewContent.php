@@ -3,6 +3,7 @@ require 'dbconn.php';
 require 'header.php';
 
 $option = $_GET['option'];
+
 switch ($option) {
 
     case 'category':
@@ -23,6 +24,9 @@ switch ($option) {
     case 'viewArticle':
         $sql = 'SELECT aid, title, a_description, author_id, cid, iname, cname FROM Article NATURAL JOIN Image NATURAL JOIN Category';
         break;
+    case 'nurseryViewProduct':
+        $sql = 'SELECT pid, pname, p_description, price, quantity, iname, cname, cid, nid FROM Product NATURAL JOIN Image NATURAL JOIN Category NATURAL JOIN Nursery_Owner WHERE uid = '.$_GET['uid'];
+        break;
 }
 
 $result = mysqli_query($conn, $sql);
@@ -35,5 +39,4 @@ while ($res = mysqli_fetch_assoc($result)) {
 $result->free_result();
 
 echo json_encode($row);
-
 mysqli_close($conn);
