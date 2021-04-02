@@ -53,8 +53,20 @@ if (!empty($dataJson)) {
 
         case 'deleteNursery':
             $sql = "DELETE FROM Nursery WHERE nid='$data->nid'";
-            if($conn->query($sql)){
+            if ($conn->query($sql)) {
                 echo json_encode('Nursery Deleted');
+            }
+            break;
+        case 'deleteOrder':
+            $sql = "DELETE FROM Product_Order WHERE oid='$data->oid'";
+            if ($conn->query($sql)) {
+                echo json_encode('Order Deleted');
+            }
+            break;
+        case 'addOrder':
+            $sql = "INSERT INTO Product_Order(pid,nid,uid,quantity) VALUES('$data->pid', '$data->nid', '$data->uid','$data->quantity')";
+            if ($conn->query($sql)) {
+                echo json_encode('Order Added');
             }
             break;
     }
