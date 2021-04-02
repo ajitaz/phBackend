@@ -28,7 +28,7 @@ switch ($option) {
         $sql = 'SELECT pid, pname, p_description, price, quantity, iname, cname, cid, nid FROM Product NATURAL JOIN Image NATURAL JOIN Category NATURAL JOIN Nursery_Owner WHERE uid = ' . $_GET['uid'];
         break;
     case 'viewOrder':
-        $sql = 'SELECT O.oid, I.iname, P.pname, P.price, O.quantity, username, U.phone, N.name FROM Product_Order as O INNER JOIN Product as P ON O.pid = P.pid INNER JOIN Nursery as N ON N.nid = P.nid INNER JOIN Image as I ON P.img_id = I.img_id INNER JOIN User as U ON U.id = O.uid';
+        $sql = 'SELECT O.oid, I.iname, P.pname, P.price, O.quantity, username, U.phone, N.name, U.id FROM Product_Order as O INNER JOIN Product as P ON O.pid = P.pid INNER JOIN Nursery as N ON N.nid = P.nid INNER JOIN Image as I ON P.img_id = I.img_id INNER JOIN User as U ON U.id = O.uid';
         break;
     case 'nurseryViewOrder':
         $sql = 'SELECT O.oid, I.iname, P.pname, P.price, O.quantity, username, U.phone, N.name FROM Product_Order as O INNER JOIN Product as P ON O.pid = P.pid INNER JOIN Nursery as N ON N.nid = P.nid INNER JOIN Image as I ON P.img_id = I.img_id INNER JOIN User as U ON U.id = O.uid WHERE O.nid = (SELECT nid FROM Nursery_Owner WHERE uid ='. $_GET['uid'].')';
