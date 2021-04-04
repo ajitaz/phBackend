@@ -31,7 +31,10 @@ switch ($option) {
         $sql = 'SELECT O.oid, I.iname, P.pname, P.price, O.quantity, username, U.phone, N.name, U.id FROM Product_Order as O INNER JOIN Product as P ON O.pid = P.pid INNER JOIN Nursery as N ON N.nid = P.nid INNER JOIN Image as I ON P.img_id = I.img_id INNER JOIN User as U ON U.id = O.uid';
         break;
     case 'nurseryViewOrder':
-        $sql = 'SELECT O.oid, I.iname, P.pname, P.price, O.quantity, username, U.phone, N.name FROM Product_Order as O INNER JOIN Product as P ON O.pid = P.pid INNER JOIN Nursery as N ON N.nid = P.nid INNER JOIN Image as I ON P.img_id = I.img_id INNER JOIN User as U ON U.id = O.uid WHERE O.nid = (SELECT nid FROM Nursery_Owner WHERE uid ='. $_GET['uid'].')';
+        $sql = 'SELECT O.oid, I.iname, P.pname, P.price, O.quantity, username, U.phone, N.name FROM Product_Order as O INNER JOIN Product as P ON O.pid = P.pid INNER JOIN Nursery as N ON N.nid = P.nid INNER JOIN Image as I ON P.img_id = I.img_id INNER JOIN User as U ON U.id = O.uid WHERE O.nid = (SELECT nid FROM Nursery_Owner WHERE uid =' . $_GET['uid'] . ')';
+        break;
+    case 'viewNewArrival':
+        $sql = 'SELECT nAid, pid, iname, cid FROM New_Arrival NATURAL JOIN Product INNER JOIN Image ON Product.img_id = Image.img_id';
         break;
 }
 
@@ -45,4 +48,5 @@ while ($res = mysqli_fetch_assoc($result)) {
 $result->free_result();
 
 echo json_encode($row);
+
 mysqli_close($conn);
