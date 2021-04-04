@@ -69,6 +69,12 @@ if (!empty($dataJson)) {
                 echo json_encode('Order Added');
             }
             break;
+        case 'addNewArrival':
+            $sql = "INSERT INTO New_Arrival(pid) VALUES('$data->pid')";
+            if ($conn->query($sql)) {
+                echo json_encode('New Arrival Added');
+            }
+            break;
     }
 }
 
