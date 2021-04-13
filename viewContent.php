@@ -36,6 +36,9 @@ switch ($option) {
     case 'viewNewArrival':
         $sql = 'SELECT nAid, pid, iname, cid FROM New_Arrival NATURAL JOIN Product INNER JOIN Image ON Product.img_id = Image.img_id';
         break;
+    case 'emailUser':
+        $sql = 'SELECT username, email FROM User WHERE id ='. $_GET['uid'];
+        break;
 }
 
 $result = mysqli_query($conn, $sql);
