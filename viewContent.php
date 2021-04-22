@@ -37,7 +37,11 @@ switch ($option) {
         $sql = 'SELECT nAid, pid, iname, cid FROM New_Arrival NATURAL JOIN Product INNER JOIN Image ON Product.img_id = Image.img_id';
         break;
     case 'emailUser':
-        $sql = 'SELECT username, email FROM User WHERE id ='. $_GET['uid'];
+        $sql = 'SELECT username, email FROM User WHERE id =' . $_GET['uid'];
+        break;
+    case 'nurseryViewArticle':
+        $sql = 'SELECT * FROM Article INNER JOIN Nursery_Owner ON Article.author_id = Nursery_Owner.uid WHERE Nursery_Owner.nid = (SELECT nid FROM Nursery_Owner WHERE uid =' . $_GET['uid'] . ')';
+
         break;
 }
 
