@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = isset($_POST['description']) ? mysqli_escape_string($conn, $_POST['description']) : "";
     $address = isset($_POST['address']) ? mysqli_escape_string($conn, $_POST['address']) : "";
     $phone = isset($_POST['phone']) ? mysqli_escape_string($conn, $_POST['phone']) : "";
+    $email = isset($_POST['email']) ? mysqli_escape_string($conn, $_POST['email']) : "";
     $image = isset($_FILES['image']) ? basename($_FILES['image']['name']) : "";
 
     $imgsql = "INSERT INTO Image(iname) Values('$image')";
@@ -49,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         $row = mysqli_fetch_assoc($result);
                         $image_id = $row['img_id'];
-                        $sql = "INSERT INTO Nursery(name, address, description, phone, img_id) VALUES('$name', '$address', '$description', '$phone', $image_id)";
+                        $sql = "INSERT INTO Nursery(name, address, description, phone, nur_email, img_id) VALUES('$name', '$address', '$description', '$phone','$email', $image_id)";
                         if (mysqli_query($conn, $sql)) {
                             http_response_code(200);
                             echo "Successfully Nursery Added";

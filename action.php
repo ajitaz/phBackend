@@ -45,7 +45,7 @@ if (!empty($dataJson)) {
             break;
 
         case 'editNursery':
-            $sql = "UPDATE Nursery SET name ='$data->name', address='$data->address', description='$data->description', phone='$data->phone' WHERE nid = $data->nid";
+            $sql = "UPDATE Nursery SET name ='$data->name', address='$data->address', description='$data->description', phone='$data->phone', nur_email='$data->email' WHERE nid = $data->nid";
             if ($conn->query($sql)) {
                 echo json_encode('Nursery Updated');
             }
