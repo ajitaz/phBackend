@@ -41,7 +41,9 @@ switch ($option) {
         break;
     case 'nurseryViewArticle':
         $sql = 'SELECT * FROM Article INNER JOIN Nursery_Owner ON Article.author_id = Nursery_Owner.uid WHERE Nursery_Owner.nid = (SELECT nid FROM Nursery_Owner WHERE uid =' . $_GET['uid'] . ')';
-
+        break;
+    case 'getCancleOrder':
+        $sql = 'SELECT * FROM Cancel_Order';
         break;
 }
 

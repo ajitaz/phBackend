@@ -75,6 +75,12 @@ if (!empty($dataJson)) {
                 echo json_encode('New Arrival Added');
             }
             break;
+        case 'addCancelOrder':
+            $sql = "INSERT INTO Cancel_Order(oid) VALUES($data->oid)";
+            if ($conn->query($sql)) {
+                echo json_encode('Canceld order Added');
+            }
+            break;
     }
 }
 
