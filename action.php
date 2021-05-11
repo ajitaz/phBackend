@@ -57,28 +57,40 @@ if (!empty($dataJson)) {
                 echo json_encode('Nursery Deleted');
             }
             break;
+
         case 'deleteOrder':
             $sql = "DELETE FROM Product_Order WHERE oid='$data->oid'";
             if ($conn->query($sql)) {
                 echo json_encode('Order Deleted');
             }
             break;
+
         case 'addOrder':
             $sql = "INSERT INTO Product_Order(pid,nid,uid,quantity) VALUES('$data->pid', '$data->nid', '$data->uid','$data->quantity')";
             if ($conn->query($sql)) {
                 echo json_encode('Order Added');
             }
             break;
+
         case 'addNewArrival':
             $sql = "INSERT INTO New_Arrival(pid) VALUES('$data->pid')";
             if ($conn->query($sql)) {
                 echo json_encode('New Arrival Added');
             }
             break;
+
         case 'addCancelOrder':
             $sql = "INSERT INTO Cancel_Order(oid) VALUES($data->oid)";
             if ($conn->query($sql)) {
                 echo json_encode('Canceld order Added');
+            }
+            break;
+
+        case 'resetPassword':
+            $hash = password_hash($data->password,PASSWORD_DEFAULT);
+            $sql= "UPDATE User SET password = '$hash' WHERE username='$data->uname'";
+            if ($conn->query($sql)) {
+                echo json_encode('Password Reset Successfully');
             }
             break;
     }
