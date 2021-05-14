@@ -49,6 +49,12 @@ if (!empty($dataJson)) {
                 echo json_encode('Article Deleted');
             }
             break;
+        case 'editArticle':
+            $sql = "UPDATE Article SET title = '$data->title', a_description = '$data->description' WHERE aid = $data->aid";
+            if ($conn->query($sql)) {
+                echo json_encode('Article Updated');
+            }
+            break;
 
         case 'editNursery':
             $sql = "UPDATE Nursery SET name ='$data->name', address='$data->address', description='$data->description', phone='$data->phone', nur_email='$data->email' WHERE nid = $data->nid";
