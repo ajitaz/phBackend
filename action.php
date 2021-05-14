@@ -43,6 +43,12 @@ if (!empty($dataJson)) {
                 echo json_encode('Product Deleted');
             }
             break;
+        case 'deleteArticle':
+            $sql = "DELETE FROM Article WHERE aid = '$data->aid'";
+            if ($conn->query($sql)) {
+                echo json_encode('Article Deleted');
+            }
+            break;
 
         case 'editNursery':
             $sql = "UPDATE Nursery SET name ='$data->name', address='$data->address', description='$data->description', phone='$data->phone', nur_email='$data->email' WHERE nid = $data->nid";
@@ -87,8 +93,8 @@ if (!empty($dataJson)) {
             break;
 
         case 'resetPassword':
-            $hash = password_hash($data->password,PASSWORD_DEFAULT);
-            $sql= "UPDATE User SET password = '$hash' WHERE username='$data->uname'";
+            $hash = password_hash($data->password, PASSWORD_DEFAULT);
+            $sql = "UPDATE User SET password = '$hash' WHERE username='$data->uname'";
             if ($conn->query($sql)) {
                 echo json_encode('Password Reset Successfully');
             }
