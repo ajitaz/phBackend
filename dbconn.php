@@ -1,8 +1,13 @@
 <?php
-$hostname = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'plant_hugger';
+// $hostname = 'localhost';
+// $username = 'root';
+// $password = '';
+// $dbname = 'plant_hugger';
+
+$hostname = 'remotemysql.com';
+$username = 'NpFnsxlDq4';
+$password = 'mIMZTnalqq';
+$dbname = 'NpFnsxlDq4';
 
 $conn = new mysqli($hostname,$username,$password,$dbname);
 if (!$conn) {
