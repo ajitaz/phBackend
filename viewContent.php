@@ -40,7 +40,7 @@ switch ($option) {
         $sql = 'SELECT username, email FROM User WHERE id =' . $_GET['uid'];
         break;
     case 'nurseryViewArticle':
-        $sql = 'SELECT * FROM Article INNER JOIN Nursery_Owner ON Article.author_id = Nursery_Owner.uid WHERE Nursery_Owner.nid = (SELECT nid FROM Nursery_Owner WHERE uid =' . $_GET['uid'] . ')';
+        $sql = 'SELECT aid, title, a_description, author_id, iname, cname FROM Article INNER JOIN Image ON Article.img_id = Image.img_id INNER JOIN Category ON Article.cid = Category.cid INNER JOIN Nursery_Owner ON Article.author_id = Nursery_Owner.uid WHERE Nursery_Owner.nid = (SELECT nid FROM Nursery_Owner WHERE uid =' . $_GET['uid'] . ')';
         break;
     case 'getCancleOrder':
         $sql = 'SELECT * FROM Cancel_Order';
