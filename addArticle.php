@@ -15,7 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         http_response_code(200);
         echo 'Successfuly uploaded image in database';
         $response = array();
-        $upload_dir = '/home/ajit/Documents/ProjectReact/plant_hugger/public/images/';
+        // $upload_dir = '/home/ajit/Documents/ProjectReact/plant_hugger/public/images/';
+        $upload_dir = 'https://plant-huggers.herokuapp.com/public/images/';
         // $upload_dir = '/Users/crpoudyal/PlantHuggers/public/images/';
         $server_url = 'http://localhost:3000';
 
