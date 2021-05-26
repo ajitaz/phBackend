@@ -78,7 +78,7 @@ if (!empty($dataJson)) {
             break;
 
         case 'addOrder':
-            $sql = "INSERT INTO Product_Order(pid,nid,uid,quantity,date) VALUES('$data->pid', '$data->nid', '$data->uid','$data->quantity','$data->date')";
+            $sql = "INSERT INTO Product_Order(pid, nid, uid, quantity, date, full_name, phone_no, delivery_address) VALUES('$data->pid', '$data->nid', '$data->uid','$data->quantity','$data->date','$data->fullName','$data->phone','$data->address')";
             if ($conn->query($sql)) {
                 echo json_encode('Order Added');
             }
