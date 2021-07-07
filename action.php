@@ -10,7 +10,7 @@ if (!empty($dataJson)) {
     switch ($data->value) {
 
         case 'edit':
-            $sql = "UPDATE User SET username = '$data->username', email = '$data->email', phone = '$data->phone', flag = '$data->flag' WHERE id = $data->id";
+            $sql = "UPDATE User SET username = '$data->username', email = '$data->email', phone = '$data->phone', role = '$data->role' WHERE id = $data->id";
             if ($conn->query($sql)) {
                 echo json_encode('User Updated');
             }
